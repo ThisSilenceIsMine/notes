@@ -15,7 +15,7 @@ type Note {
 
 type Query {
   user(id: ID!): User
-  notes: [Note]
+  notes(userId: ID!): [Note!]!
 }
 
 type Mutations {
