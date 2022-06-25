@@ -6,7 +6,7 @@ export const notes: Note[] = [
     title: 'Note 1',
     content: 'This is the first note',
     user: {
-      id: 'userId' + '-user',
+      id: 'foo',
       name: 'John Doe',
       email: 'foo',
       password: 'bar',
@@ -17,7 +17,7 @@ export const notes: Note[] = [
     title: 'Note 2',
     content: 'This is the second note',
     user: {
-      id: 'userId' + '-user',
+      id: 'foo',
       name: 'John Doe',
       email: 'foo',
       password: 'bar',
@@ -28,7 +28,7 @@ export const notes: Note[] = [
     title: 'Note 3',
     content: 'This is the third note',
     user: {
-      id: 'userId' + '-user',
+      id: 'foo',
       name: 'John Doe',
       email: 'foo',
       password: 'bar',
@@ -39,7 +39,7 @@ export const notes: Note[] = [
     title: 'Note 4',
     content: 'How do I spell',
     user: {
-      id: 'userId' + '-user',
+      id: 'foo',
       name: 'John Doe',
       email: 'foo',
       password: 'bar',

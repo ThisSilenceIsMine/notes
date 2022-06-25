@@ -1,7 +1,18 @@
+import { gql, useQuery } from '@apollo/client';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
+const basicQuery = gql`
+  query MyQuery {
+    notes(userId: "foo") {
+      title
+    }
+  }
+`;
+
 const Home: NextPage = () => {
+  const { loading, error, data } = useQuery(basicQuery);
+  console.log(error);
   return (
     <div>
       <Head>
@@ -10,6 +21,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       Hello, Next!
+      {loading && <p>Loading...</p>}
+      {error && <p>Error:</p>}
+      {data && <p>{JSON.stringify(data)}</p>}
     </div>
   );
 };
