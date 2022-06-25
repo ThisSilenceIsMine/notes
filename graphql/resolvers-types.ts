@@ -14,8 +14,8 @@ export type Scalars = {
   Float: number;
 };
 
-export type Mutations = {
-  __typename?: 'Mutations';
+export type Mutation = {
+  __typename?: 'Mutation';
   createNote?: Maybe<Note>;
   createUser?: Maybe<User>;
   deleteNote?: Maybe<Note>;
@@ -23,29 +23,29 @@ export type Mutations = {
 };
 
 
-export type MutationsCreateNoteArgs = {
+export type MutationCreateNoteArgs = {
   content: Scalars['String'];
   title: Scalars['String'];
   user: Scalars['ID'];
 };
 
 
-export type MutationsCreateUserArgs = {
+export type MutationCreateUserArgs = {
   email: Scalars['String'];
   name: Scalars['String'];
   password: Scalars['String'];
 };
 
 
-export type MutationsDeleteNoteArgs = {
+export type MutationDeleteNoteArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationsUpdateNoteArgs = {
-  content: Scalars['String'];
+export type MutationUpdateNoteArgs = {
+  content?: InputMaybe<Scalars['String']>;
   id: Scalars['ID'];
-  title: Scalars['String'];
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type Note = {
@@ -152,7 +152,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  Mutations: ResolverTypeWrapper<Mutations>;
+  Mutation: ResolverTypeWrapper<{}>;
   Note: ResolverTypeWrapper<Note>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
@@ -163,19 +163,18 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   ID: Scalars['ID'];
-  Mutations: Mutations;
+  Mutation: {};
   Note: Note;
   Query: {};
   String: Scalars['String'];
   User: User;
 };
 
-export type MutationsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutations'] = ResolversParentTypes['Mutations']> = {
-  createNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationsCreateNoteArgs, 'content' | 'title' | 'user'>>;
-  createUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationsCreateUserArgs, 'email' | 'name' | 'password'>>;
-  deleteNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationsDeleteNoteArgs, 'id'>>;
-  updateNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationsUpdateNoteArgs, 'content' | 'id' | 'title'>>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  createNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationCreateNoteArgs, 'content' | 'title' | 'user'>>;
+  createUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'email' | 'name' | 'password'>>;
+  deleteNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationDeleteNoteArgs, 'id'>>;
+  updateNote?: Resolver<Maybe<ResolversTypes['Note']>, ParentType, ContextType, RequireFields<MutationUpdateNoteArgs, 'id'>>;
 };
 
 export type NoteResolvers<ContextType = any, ParentType extends ResolversParentTypes['Note'] = ResolversParentTypes['Note']> = {
@@ -201,7 +200,7 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type Resolvers<ContextType = any> = {
-  Mutations?: MutationsResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Note?: NoteResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
